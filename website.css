@@ -1,0 +1,11 @@
+
+        body{
+                background-image:('/home/itachi/PycharmProjects/pythonProject/website/BG.jpg');
+                background-repeat:no-repeat center center fixed;
+                background-size:cover;
+            }
+            p{
+                font-family:Georgia, Garamond, Serif;
+                font-size:15pt;
+                color: black;
+            }
