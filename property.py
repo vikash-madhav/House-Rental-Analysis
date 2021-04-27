@@ -22,12 +22,14 @@ House_details = {
 var = requests.get('https://www.commonfloor.com/bangalore-property/for-rent/apartment-ht/3-bhk').text
 soup = BeautifulSoup(var, 'html.parser')
 houses = soup.find_all('div', class_='snb-tile')
+carpet_area_array = soup.find_all('small', class_ = "smtext")
 
+i = 0
     # for each house we will scrape agent, details, rent, seller, location, amenities.
 for house in houses:
     agent = house.find('div', class_="infownertext").find("small").text
     details = house.find('div', class_="inforow pull-left graybg").text.replace(' ', '')
-    carpet_area = soup.find('div', class_="infodata").find("span").text
+    carpet_area = carpet_area_array[i].text
     rent = house.find('span', class_='s_p').text.replace('', '')
     for a in house.findAll('a', attrs={'class': 'gtpnd'}):
         seller = a.text
@@ -61,9 +63,11 @@ for house in houses:
     House_details["Seller"].append(seller)
     House_details["Carpet_area"].append(carpet_area)
 
+    i += 1
     # Converting the dictionary into a pandas DataFrame and then to CSV file
 df = pd.DataFrame.from_dict(House_details, orient="index")
 df = df.transpose()
+#print(df)
 df.to_csv("House_details.csv")
 df = pd.read_csv("House_details.csv", index_col=0)
 df.tail(5)
@@ -133,9 +137,12 @@ plt.xticks(rotation=80,fontsize=15)
 plt.title("Available Amenities",fontsize=20)
 plt.show()
 
+plt.title("Carpet Area VS Rent")
 plt.scatter(df.Rent, df.Carpet_area)
+plt.xlabel('rent', fontsize=12)
+plt.ylabel('carpet area', fontsize=12)
 plt.show()
-#
+
 #df = pd.DataFrame(columns=['Rent' , 'Carpet_area'])
 #df.plot(x ='Rent', y='Carpet_area', kind = 'scatter')
 #plt.show()
