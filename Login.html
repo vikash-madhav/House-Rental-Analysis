@@ -1,0 +1,201 @@
+<html>   
+ 
+    <title> Login Page </title>  
+
+    <body>  
+        <center> 
+            <h1>Know Your Rent Login</h1>
+        </center> 
+        <style>   
+        body {
+                background-image: url('BG.jpg');   
+            }
+            h1{
+                font-family:Georgia, Garamond, Serif;
+                font-size:55pt;  
+                color: white;
+            }
+
+            /* Style the buttons that are used to open the tab content */
+            .tab {
+                overflow: hidden;
+                border: 1px solid #ccc;
+                background-color: #f1f1f1;
+            }
+            
+            /* Style the buttons that are used to open the tab content */
+            .tab button {
+                background-color: inherit;
+                float: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 14px 16px;
+                transition: 0.3s;
+            }
+            
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+                background-color: #ddd;
+            }
+            
+            /* Create an active/current tablink class */
+            .tab button.active {
+                background-color: #ccc;
+            }
+            
+            /* Style the tab content */
+            .logon {
+                display: none;
+                padding: 6px 12px;
+                border: 1px solid #ccc;
+                border-top: none;
+            }
+            body{
+            font-family:Georgia, Garamond, Serif;  
+            background-color:white 
+            
+                }
+            .submit {   
+                background-color: grey;   
+                width: 100%;  
+                    color: black;   
+                    padding: 15px;   
+                    margin: 10px 0px;   
+                    border: none;   
+                    cursor: pointer;   
+                    }   
+            .form {   
+                    border: 3px solid #f1f1f1;   
+                }   
+            .input[type=text], input[type=password] {   
+                    width: 100%;   
+                    margin: 8px 0;  
+                    padding: 12px 20px;   
+                    display: inline-block;   
+                    border: 2px solid black;   
+                    box-sizing: border-box;   
+                }  
+            .submit:hover {   
+                    opacity: 0.7;   
+                }   
+            .cancelbtn {   
+                width: auto;   
+                    padding: 10px 18px;  
+                    margin: 10px 5px;  
+                } 
+                .registerbtn {   
+                width: auto;   
+                    padding: 10px 18px;  
+                    margin: 10px 5px;  
+                } 
+            .center{
+                background-color:white;
+                max-width: 1000px;
+            }
+        </style>  
+
+<script> 
+    function validateC(){
+        var username = document.getElementById("unameC").value;
+        var password = document.getElementById("pwdC").value;
+        if ( username == "user" || password == "Password"){
+        window.open("Proj_website.html"); 
+        
+        }
+        else{
+            alert("Wrong Username or Password");
+        }
+    }
+</script>
+<script>
+function validateA(){
+    var username = document.getElementById("unameA").value;
+    var password = document.getElementById("pwdA").value;
+    if ( username == "vikash" || password == "Vikash21"){
+        window.open("Proj_website.html");
+    return false;
+    }
+    else{
+        alert("Wrong Username or Password");
+    }
+}
+</script>
+        
+    <center> <div class="center"> 
+  
+
+    <div class="tab">
+        <button class="tablinks" onclick="openLogin(event, 'Customer')">Customer</button>
+        <button class="tablinks" onclick="openLogin(event, 'Admin')">Admin</button>
+      </div>  
+       
+ 
+      <div id="Customer" class="logon">
+        <center> <h2> Customer Login Form </h2 </center>
+    <form id="Clogin">  
+        <div class="container">   
+            <label>Username : </label>   
+            <input  id="unameC" class="input" type="text" placeholder="Enter Username" name="username" required>  
+            <label>Password : </label>   
+            <input id="pwdC" class="input" type="password" placeholder="Enter Password" name="password" required>  
+            <a href="Proj_website.html"><button type="button"  value="Login" id="submit"class="submit" onclick="validateC()"> Login</button></a>   
+            <input type="checkbox" checked="checked"> Remember me   
+            <a href="Proj_website.html"><button type="button" class="cancelbtn"> Cancel</button></a>  
+            <a href="Register.html"><button type="button"  value="Register" id="submit" class="registerbtn">Register</button></a>   
+            Forgot <a href="#"> password? </a>   
+        </div>   
+    </form>   
+    </div> 
+
+
+       
+
+    <div id="Admin" class="logon">
+        <center> <h2> Admin Login Form </h2> </center>
+    <form id="Alogin">  
+        <div class="container">   
+            <label>Username : </label>   
+            <input id="unameA" class="input" type="text" placeholder="Enter Username" name="username" required>  
+            <label>Password : </label>   
+            <input  id="pwdA" class="input" type="password" placeholder="Enter Password" name="password" required>  
+            <a href="Proj_website.html"><button type="button"  value="Login" id="submit"class="submit" onclick="validateA()"> Login</button></a>   
+            <input type="checkbox" checked="checked"> Remember me   
+            <a href="Proj_website.html"><button type="button"  value="cancel" id="submit"  class="cancelbtn"> Cancel</button></a> 
+            Forgot <a href="#"> password? </a>   
+        </div>   
+    </form>   
+    </div> 
+    </div> </center> 
+    
+    <script>
+        function openLogin(evt, Login) {
+      // Declare all variables
+      var i, logon, tablinks;
+    
+      // Get all elements with class="logon" and hide them
+      logon = document.getElementsByClassName("logon");
+      for (i = 0; i < logon.length; i++) {
+        logon[i].style.display = "none";
+      }
+    
+      // Get all elements with class="tablinks" and remove the class "active"
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+    
+      // Show the current tab, and add an "active" class to the button that opened the tab
+      document.getElementById(Login).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    </script>
+    <button class="tablinks" onclick="openLogin(event, 'Customer')" id="defaultOpen">Customer</button>
+
+    <script>
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+    </script>
+
+</body>     
+</html>
